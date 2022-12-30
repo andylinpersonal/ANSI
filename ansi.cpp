@@ -34,6 +34,10 @@ int ANSI::peek()
   return _stream->peek();
 }
 
+void ANSI::flush()
+{
+  return _stream->flush();
+}
 
 void ANSI::clearScreen()
 {
@@ -97,8 +101,8 @@ void ANSI::color(uint8_t fgcolor, uint8_t bgcolor)
 
 uint8_t ANSI::rgb2color(uint8_t r, uint8_t g, uint8_t b) {
   return 16 +
-    36 * (uint16_t(r) * 6 / 256) + 
-     6 * (uint16_t(g) * 6 / 256) + 
+    36 * (uint16_t(r) * 6 / 256) +
+     6 * (uint16_t(g) * 6 / 256) +
          (uint16_t(b) * 6 / 256);
 }
 
@@ -149,7 +153,7 @@ int ANSI::deviceType(uint32_t timeout)
 {
   int type = -1;        //  -1 = unknown
   print("\033[0c");
-  
+
   uint32_t start = millis();
   int read_len = 0;
   char buffer[8];

@@ -23,7 +23,7 @@ public:
   int  available();
   int  read();
   int  peek();
-  void flush()     { return; };  //  placeholder to keep CI happy
+  void flush();
 
 
   //  CHAR MODES
@@ -58,7 +58,7 @@ public:
   void foreground(uint8_t fgcolor);
   //  Set background color
   void background(uint8_t bgcolor);
-  //  Set foreground and background color 
+  //  Set foreground and background color
   //  (for named colors, this is 25% faster than setting one then the other)
   void color(uint8_t fgcolor, uint8_t bgcolor);
 
@@ -91,11 +91,11 @@ public:
 
 
   //  META
-  //  deviceType is discussed 
+  //  deviceType is discussed
   //    - https://github.com/RobTillaart/ANSI/issues/9
-  //  timeout in milliseconds. 
+  //  timeout in milliseconds.
   //  note this function blocks for timeout or less.
-  //  -1 = unknown; 
+  //  -1 = unknown;
   //   1 = VT52, 2 = VT100, 3 = VT220,
   int deviceType(uint32_t timeout = 100);
 
